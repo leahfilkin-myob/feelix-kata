@@ -30,15 +30,12 @@ button {
 #addItem {
     width: 160px;
     height: calc(100% - 4px);
-    padding: 0px 2px;
+    padding: 0 2px;
 }
 
 #optionsSection {
     width: 280px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin: 15px auto;
 }
 
 .optionsFlex {
