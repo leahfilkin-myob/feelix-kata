@@ -50,8 +50,6 @@ button {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border: 2px;
-    padding: 10px;
     align-items: center;
     background-color: white;
     margin: 5px;
