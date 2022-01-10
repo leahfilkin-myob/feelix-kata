@@ -1,0 +1,62 @@
+body {
+    background: linear-gradient(90deg, lightgrey, lightblue);
+}
+
+#mainHeading {
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+#addItemBox {
+    width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 30px;
+}
+
+
+.justifyWithSpaceBetween {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    width: 100px;
+    height: 30px;
+}
+
+#addItem {
+    width: 160px;
+    height: calc(100% - 4px);
+    padding: 0px 2px;
+}
+
+#optionsSection {
+    width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.optionsFlex {
+    display: flex;
+    flex-direction: column;
+}
+
+.option {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 2px;
+    padding: 10px;
+    align-items: center;
+    background-color: white;
+    margin: 5px;
+    border-radius: 15px;
+    border: 2px solid black;
+    padding: 25px;
+}
+
