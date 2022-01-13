@@ -29,10 +29,10 @@ displayItems(items);
 function displayItems(items) {
     const optionWrapper = document.getElementById("optionsSection")
     clearOptions(optionWrapper);
+
     for (let i = 0; i < items.length; i++) {
         const newOption = document.createElement('div');
         newOption.className = "option";
-        newOption.id = "option-"+i;
         if (items[i].checked === true) {
             newOption.className = "option ticked";
         };
@@ -42,8 +42,6 @@ function displayItems(items) {
 
         const tickButton = document.createElement('button')
         tickButton.className = "tickButton";
-        tickButton.id = "tickButton-"+i;
-        tickButton.setAttribute('href', '#option-'+i);
         tickButton.innerText = "Tick!";
         newOption.appendChild(tickButton);
 
@@ -56,34 +54,41 @@ function clearOptions(parent) {
     }
 };
 
+document.addEventListener('click', updateShoppingList);
 
-document.addEventListener('click', function(event) {
-    if (event.target.classList.contains("tickButton")) {
-        const parent = event.target.parentNode;
-        const optionName = parent.children[0].innerText;
-        for (let i = 0; i < items.length; i++) {
-            if (items[i].name === optionName) {
-                items[i].checked = true;
-                console.log(items[i]);
-            };
-        };
-    };
-
+function updateShoppingList(event) {
+    const parent = event.target.parentNode;
     if (event.target.classList.contains("addButton")) {
-        const parent = event.target.parentNode;
-        const input = parent.querySelector("input")
-        const groceryInputted = input.value;
-        let newItem = {
-            name: groceryInputted,
-            checked: false
-        };
-        items.push(newItem)
+        addItemToList(event, parent);
     };
-
-    console.log(items);
+    if (event.target.classList.contains("tickButton")) {
+        crossItemOffList(event, parent);
+    };
     displayItems(items);
     return;
 
-}, false);
+};
+
+function addItemToList(event, parent) {
+    const input = parent.querySelector("input")
+    const optionName = input.value;
+    if (optionName.length < 1) {
+        return;
+    };
+    let newItem = {
+        name: optionName,
+        checked: false
+    };
+    items.push(newItem)
+};
+
+function crossItemOffList(event, parent) {
+    const optionName = parent.children[0].innerText;
+    for (let i = 0; i < items.length; i++) {
+        if (items[i].name === optionName) {
+            items[i].checked = true;
+        };
+    };
+};
 
 
