@@ -28,6 +28,7 @@ displayItems(items);
 
 function displayItems(items) {
     const optionWrapper = document.getElementById("optionsSection")
+
     clearOptions(optionWrapper);
 
     for (let i = 0; i < items.length; i++) {
@@ -36,16 +37,17 @@ function displayItems(items) {
         if (items[i].checked === true) {
             newOption.className = "option ticked";
         };
+
         const newName = document.createElement('p')
         newName.innerText = items[i].name;
-        newOption.appendChild(newName);
 
         const tickButton = document.createElement('button')
         tickButton.className = "tickButton";
         tickButton.innerText = "Tick!";
-        newOption.appendChild(tickButton);
 
         optionWrapper.appendChild(newOption);
+        newOption.appendChild(newName);
+        newOption.appendChild(tickButton);
     }};
 
 function clearOptions(parent) {
