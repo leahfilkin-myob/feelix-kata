@@ -25,37 +25,6 @@ const items = [
 ];
 
 displayItems(items);
-
-function displayItems(items) {
-    const optionWrapper = document.getElementById("optionsSection")
-
-    clearOptions(optionWrapper);
-
-    for (let i = 0; i < items.length; i++) {
-        const newOption = document.createElement('div');
-        newOption.className = "option";
-        if (items[i].checked === true) {
-            newOption.className = "option ticked";
-        };
-
-        const newName = document.createElement('p')
-        newName.innerText = items[i].name;
-
-        const tickButton = document.createElement('button')
-        tickButton.className = "tickButton";
-        tickButton.innerText = "Tick!";
-
-        optionWrapper.appendChild(newOption);
-        newOption.appendChild(newName);
-        newOption.appendChild(tickButton);
-    }};
-
-function clearOptions(parent) {
-    while (parent.firstChild) {
-        parent.firstChild.remove();
-    }
-};
-
 document.addEventListener('click', updateShoppingList);
 
 function updateShoppingList(event) {
@@ -91,6 +60,48 @@ function crossItemOffList(event, parent) {
             items[i].checked = true;
         };
     };
+};
+
+function createNewOption(i) {
+    var newOption = document.createElement('div');
+    newOption.className = "option";
+    if (items[i].checked === true) {
+        newOption.className = "option ticked";
+    };
+    return newOption;
+}
+
+function createNewName(i) {
+    let newName = document.createElement('p')
+    newName.innerText = items[i].name;
+    return newName;
+}
+
+function createNewTickButton() {
+    let tickButton = document.createElement('button')
+    tickButton.className = "tickButton";
+    tickButton.innerText = "Tick!";
+    return tickButton;
+};
+
+function displayItems(items) {
+    const optionWrapper = document.getElementById("optionsSection")
+    clearOptions(optionWrapper);
+    for (let i = 0; i < items.length; i++) {
+        const newOption = createNewOption(i);
+        const newName = createNewName(i);
+        const tickButton = createNewTickButton();
+
+        optionWrapper.appendChild(newOption);
+        newOption.appendChild(newName);
+        newOption.appendChild(tickButton);
+    };
+};
+
+function clearOptions(parent) {
+    while (parent.firstChild) {
+        parent.firstChild.remove();
+    }
 };
 
 
