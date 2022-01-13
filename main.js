@@ -72,7 +72,7 @@ function updateShoppingList(event) {
 };
 
 function addItemToList(event, parent) {
-    const input = parent.querySelector("input")
+    const input = parent.querySelector("input");
     const optionName = input.value;
     if (optionName.length < 1) {
         return;
